@@ -1,0 +1,13 @@
+If the movie is missing the height and width in the database table: media_items, then that is indicitive of the movie not being analyized. 
+
+Check aladdin: id: 35476
+
+It should not be found.
+
+So if the item ID is not in the table metadata_items than the item is not matched properly.
+
+
+SELECT title
+FROM external_metadata_items
+WHERE title NOT LIKE ""
+AND id NOT IN (SELECT id FROM metadata_items)
